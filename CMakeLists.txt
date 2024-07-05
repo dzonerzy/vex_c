@@ -47,22 +47,22 @@ set(VEX_C_HEADERS
 )
 
 # Create the static library for vex_c
-add_library(${PROJECT_NAME}_static STATIC ${VEX_C_SOURCES} ${VEX_C_HEADERS})
+add_library(${PROJECT_NAME} STATIC ${VEX_C_SOURCES} ${VEX_C_HEADERS})
 
 # Ensure that vex is built before building the vex_c library
-add_dependencies(${PROJECT_NAME}_static vex)
+add_dependencies(${PROJECT_NAME} vex)
 
 # Link against the vex static library
-target_link_libraries(${PROJECT_NAME}_static ${VEX_INSTALL_DIR}/lib/libLibVex_static.a)
+target_link_libraries(${PROJECT_NAME} ${VEX_INSTALL_DIR}/lib/libLibVex_static.a)
 
 # Platform-specific settings
 if (WIN32)
     set(CMAKE_C_COMPILER "gcc")
     set(CMAKE_CXX_COMPILER "g++")
-    target_link_libraries(${PROJECT_NAME}_static)
+    target_link_libraries(${PROJECT_NAME})
 else()
-    target_compile_options(${PROJECT_NAME}_static PRIVATE -Wall -Wextra)
-    target_link_libraries(${PROJECT_NAME}_static pthread)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
+    target_link_libraries(${PROJECT_NAME} pthread)
 endif()
 
 # Handle debug mode
