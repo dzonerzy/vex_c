@@ -21,6 +21,7 @@ ExternalProject_Add(
     PREFIX ${VEX_BINARY_DIR}
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/vex
     BINARY_DIR ${VEX_BINARY_DIR}/build
+    CMAKE_ARGS -DMULTIARCH=ON # Enable multiarch
     BUILD_ALWAYS 1
     INSTALL_COMMAND "" # Disable install step
 )
