@@ -4,6 +4,7 @@
 #define __VEXIR_H
 
 #include <libvex.h>
+#include <stdint.h>
 
 // Some info required for translation
 extern int log_level;
